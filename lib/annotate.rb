@@ -61,10 +61,10 @@ module Annotate
       options[key] = true?(ENV[key.to_s])
     end
     OTHER_OPTIONS.each do |key|
-      options[key] = (!ENV[key.to_s].blank?) ? ENV[key.to_s] : nil
+      options[key] = (!(ENV[key.to_s].nil? || ENV[key.to_s].empty?)) ? ENV[key.to_s] : nil
     end
     PATH_OPTIONS.each do |key|
-      options[key] = (!ENV[key.to_s].blank?) ? ENV[key.to_s].split(',') : []
+      options[key] = (!(ENV[key.to_s].nil? || ENV[key.to_s].empty?)) ? ENV[key.to_s].split(',') : []
     end
 
     if(!options[:model_dir])
