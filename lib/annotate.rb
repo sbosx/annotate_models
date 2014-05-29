@@ -139,12 +139,11 @@ module Annotate
   end
 
   def self.fallback(*args)
-    return args.detect { |arg| !arg.blank? }
+    return args.detect { |arg| !arg.nil? }
   end
 
   def self.true?(val)
-    return false if(val.blank?)
-    return false unless(val =~ TRUE_RE)
-    return true
+    return true if val =~ TRUE_RE || val == true
+    false
   end
 end
